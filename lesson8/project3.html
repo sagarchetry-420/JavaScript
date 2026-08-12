@@ -1,0 +1,76 @@
+<!-- Lets create a coin-flip game 
+ - Generate a random number with Math.random(). Save it in a variable.
+ - Create an if-statement and check:
+ if the number is less than 0.5, then display 'heads' in the console.
+ else display 'tails' in the console.
+ - Instead fo displaying 'heads' or 'tails' in the console, save the result in a variable called 'result'.
+ - Lets say we are trying to guess the result. Create a variable called 'guess' and save you guess ('head' or 'tails').
+ if your guess matches the result, display 'you win!' in the console.
+ if your guess does not match the result, display 'you loose1'.
+ - Instead of using if statement in the previous exercise. try switching them into ternary operators ( condition ? A : B).-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="playGame('head');">Heads</button>
+    <button onclick="playGame('tail');">Tails</button>
+    <button onclick="resetGame();">Reset</button>
+    <script>
+
+        // lets improve this coin flip game. lets create buttons 'head' and 'tails'. when clicking 'heads' paly the game with guess = 'heads'. when clicking 'tails' paly the game with guess = 'tails'. Create a function 'playGame(guess)' to reuse the code.
+
+        // lets Create a score object { wins: 0, losses: 0}, update the score each time after playing, and display the score in the console.
+
+        // use local storage to save and load the score (hint: you'll need to use JSON.stringify() to convert the score object to a string).
+
+        let result;
+        let score = JSON.parse(localStorage.getItem('score')) || { wins: 0, losses: 0 };
+
+        /*{
+            wins: 0,
+            losses: 0
+        }; */
+
+        function playGame(guess) {
+            let randNum = Math.random();
+            if (randNum <= 0.5) {
+                result = 'head';
+            }
+            else {
+                result = 'tail';
+            }
+            console.log('your guess: ', guess);
+            console.log(`computer guess: ${result}`);
+            if (result === guess) {
+                console.log('You win');
+                score.wins++;
+            }
+            else {
+                console.log('You loose');
+                score.losses++;
+            }
+            localStorage.setItem('score', JSON.stringify(score));
+            console.log('your score: ', score);
+        }
+
+        // to reset game
+
+        function resetGame() {
+            localStorage.removeItem('score');
+            score = {
+                wins: 0,
+                losses: 0
+            };
+            console.log('Game reseted', score);
+        }
+    </script>
+</body>
+
+</html>

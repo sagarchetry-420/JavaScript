@@ -1,0 +1,30 @@
+<!-- we have basketball product. This product has a name of 'basketball', a price of 2095 cents. Create an object to represent this product and display it in the console.-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //lets say we want to increase the price by 500 cents. Use dot notation to increase the price, and display the updated object in the console.
+
+        let product = {
+            name: 'basketball',
+            price: 2095,
+            ['delivery-time'] : '3-days'
+        };
+
+        
+        console.log(product);
+        product.price += 500;
+        console.log('updated price adding 500');
+        console.log(product);
+        // use bracket notation, add a property 'delivery-time' to the object with the value '3 days'. Display the updated object in the console.
+        console.log('after adding', product);
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!-- Create a function 'comparePrice(product1, product2)', which takes 2 products ( with 'name' and 'price' properties) and returns the product that is less expensive. Create 2 products and try out the function. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let product1 = {
+            name: 'shirt',
+            price: 2050
+        };
+
+        let product2 = {
+            name: 'shirt',
+            price: 2000
+        };
+
+        comparePrice(product1, product2);
+
+        isSameProduct(product1, product2);
+
+        function comparePrice(product1, product2) {
+
+            if (product1.price < product2.price) {
+                console.log('Less expensive product is: ', product1);
+            }
+            else if (product1.price === product2.price) {
+                console.log('Both item price is same: ', product1, product2);
+            }
+            else {
+                console.log('Less expensive product is: ', product2);
+            }
+        }
+
+        // it returns true if 2 products have the same values inside ('name' and 'price'). If not, return false.
+
+        function isSameProduct(product1, product2) {
+            if ((JSON.stringify(product1)) === (JSON.stringify(product2))) {
+                console.log('Both are same: ', true);
+            }
+            else {
+                console.log('Both are same: ', false);
+            }
+        }
+    </script>
+</body>
+
+</html>
