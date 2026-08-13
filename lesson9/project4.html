@@ -1,0 +1,25 @@
+<!-- Let's create the project on the right:
+ - Whenever we type on the page.
+ - To do this, we'll learn another event called <input onkeyup="">.
+ - This runs code after we press a key and release it (key comes up).-->
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ </head>
+ <body>
+    <input type="text" name="" id="" class="js-input" placeholder="Type something" onkeyup="typeSomething();">
+    <p class="js-para"></p>
+    <script>
+        function typeSomething(){
+            let entertextElm = document.querySelector('.js-input');
+            let enterText = entertextElm.value;
+            document.querySelector('.js-para').innerHTML = `${enterText}`;
+            console.log(`${enterText}`);
+        }
+    </script>
+ </body>
+ </html>

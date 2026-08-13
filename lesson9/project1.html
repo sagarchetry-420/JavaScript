@@ -1,0 +1,46 @@
+<!-- Youtube subscribe button -->
+ 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Youtube Subscribe Button </title>
+</head>
+
+<body>
+    <p>Youtube Subscribe Button</p>
+    <button class="js-button" onclick="subsCribe();">
+        Subscribe
+    </button>
+    <script>
+        const buttonElm = document.querySelector('.js-button');
+        
+        /*
+        function subsCribe() {
+            if (buttonElm.innerHTML === 'Subscribe') {
+                buttonElm.innerHTML = 'Subscribed';
+            }
+            else {
+                buttonElm.innerHTML = 'Subscribe';
+            }
+        }
+        */
+
+        // if you put space in html element
+
+        function subsCribe() {
+            if (buttonElm.innerText === 'Subscribe') {
+                buttonElm.innerText = 'Subscribed';
+            }
+            else {
+                buttonElm.innerText = 'Subscribe';
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

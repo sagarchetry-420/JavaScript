@@ -1,0 +1,37 @@
+<!-- Create a text box (<input>) and a submit button. When clicking 'Submit', display 'Your naem is: ${text}' on the page (${text}) = the text inside the box) (hint: use .value to get the text inside and <input>). -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" name="" id="" placeholder="Enter your name" class="js-input" onkeydown="enterKey();">
+    <button class="js-submit" onclick="yourName();">Submit</button>
+    <p class="yourname"></p>
+    <script>
+
+
+        function yourName() {
+            let submitElm = document.querySelector('.js-input');
+            let submit = submitElm.value;
+            let your = document.querySelector('.yourname');
+            your.innerHTML = `Your name is: ${submit}`;
+            console.log(`Your name is: ${submit}`);
+        }
+
+        // after clicking enter
+
+        function enterKey(){
+            if(event.key === 'Enter'){
+                yourName();
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!-- Create two buttons 'heads' and 'tails', and a paragraph (<p></p>) underneath. When clicking the 'heads' button, display 'You chose: heads' in the paragraph. When the 'tails' button, display 'You chose: tails'.-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button class="js-heads" onclick="whatSelect('head');">Heads</button>
+    <button class="js-tails" onclick="whatSelect('tail');">Tails</button>
+    <p class="js-text"></p>
+    <script>
+        function whatSelect(value) {
+
+            let textElm = document.querySelector('.js-text');
+
+            if (value === 'head') {
+                textElm.innerHTML = 'You chose: heads';
+            }
+            else if (value === 'tail') {
+                textElm.innerHTML = 'You chose: tails';
+            }
+        } 
+    </script>
+</body>
+
+</html>

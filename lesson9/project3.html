@@ -1,0 +1,55 @@
+<!-- Amazon Shipping Calculator -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Amazon Shipping Calculator</p>
+    <p>Orders under $40 = +$10 shipping.</p>
+    <p>Order over $40 = FREE shipping.</p>
+    <input placeholder="Cost of order" class="js-input" onkeydown="onEnter();">
+    <button onclick="calculateTotal();">Calculate</button>
+    <p class="js-cost-after-calculation"></p>
+    <script>
+
+        // to calculate shipping charge
+        function calculateTotal() {
+
+            let costElm = document.querySelector('.js-input');
+
+            let cost = Number(costElm.value);
+
+            let afterCalculationElm = document.querySelector('.js-cost-after-calculation');
+
+            if (cost >= 40) {
+                afterCalculationElm.innerHTML = `Your cost is: $${cost}`;
+                console.log(`Your cost is: $${cost}`);
+            }
+            else if (cost > 0 && cost < 40) {
+                cost += 10;
+                afterCalculationElm.innerHTML = `Your cost is: $${cost}`;
+                console.log(`Your cost is: $${cost}`);
+            }
+            else {
+                afterCalculationElm.innerHTML = 'You didnot ordered anything';
+                console.log('You didnot ordered anything');
+
+            }
+        }
+
+        // on clicking enter key 
+        function onEnter() {
+            if (event.key === 'Enter') {
+                calculateTotal();
+            }
+        }
+    </script>
+</body>
+
+</html>

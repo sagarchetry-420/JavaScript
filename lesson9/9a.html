@@ -1,0 +1,23 @@
+<!-- Create a button. Use document.querySelector('buttton') to get the button from the page, and then display it in the console. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>button</button>
+    <button class="js-button">9a</button>
+    <script>
+        console.log(document.querySelector('button'));
+
+        // using js change the text in the second button to '9a done'
+        document.querySelector('.js-button').innerHTML = '9a done';
+    </script>
+</body>
+
+</html>
