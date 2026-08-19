@@ -1,0 +1,74 @@
+<!-- if we type a number less than 0, display a red error message below the text box -->
+<!-- Amazon Shipping Calculator -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .calculate-btn {
+            background-color: green;
+            border: none;
+            color: white;
+            padding: 5px 20px;
+        }
+
+        .js-input {
+            padding: 4px 3px;
+        }
+
+        .below-zero {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <p>Amazon Shipping Calculator</p>
+    <p>Orders under $40 = +$10 shipping.</p>
+    <p>Order over $40 = FREE shipping.</p>
+    <input placeholder="Cost of order" class="js-input" onkeydown="onEnter();">
+    <button class="calculate-btn" onclick="calculateTotal();">Calculate</button>
+    <p class="js-cost-after-calculation"></p>
+    <script>
+
+        // to calculate shipping charge
+        function calculateTotal() {
+
+            let costElm = document.querySelector('.js-input');
+            let cost = Number(costElm.value);
+
+            let afterCalculationElm = document.querySelector('.js-cost-after-calculation');
+
+            if (cost >= 40) {
+                afterCalculationElm.innerHTML = `Your cost is: $${cost}`;
+                afterCalculationElm.classList.remove('below-zero');
+
+            }
+            else if (cost > 0 && cost < 40) {
+                cost += 10;
+                afterCalculationElm.innerHTML = `Your cost is: $${cost}`;
+                afterCalculationElm.classList.remove('below-zero');
+
+            }
+            else {
+                afterCalculationElm.innerHTML = 'Error: cost cannot be less than $0';
+                afterCalculationElm.classList.add('below-zero');
+
+
+            }
+        }
+
+        // on clicking enter key 
+        function onEnter() {
+            if (event.key === 'Enter') {
+                calculateTotal();
+            }
+        }
+    </script>
+</body>
+
+</html>

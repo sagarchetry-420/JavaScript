@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //Create a function minMax(nums) that takes an array of numbers and returns an object with the minimum and maximum numbers in the array.
+        // - minMax([1,-3,5]) => {min: -3, max: 5}
+        // - minMax([-2,3,-5,7,10]) => {min: -5, max: 10}
+
+
+        // It should also handle this cases:
+        // minMax([]) => {min: null, max: null}
+        // minMax([3]) => {min: 3, max: 3}
+
+        const arr = [-2,3,-5,7,10];
+
+        const result = {
+            min: arr[0],
+            max: arr[0]
+        };
+
+        minMax(arr);
+
+        function minMax(arr) {
+
+            const n = arr.length;
+
+            if (arr.length === 0) {
+                console.log('min: null, max: null');
+            }
+
+            else if (arr.length === 1) {
+                console.log(`min: ${arr}, max: ${arr}`);
+            }
+
+            else {
+                for (let i = 0; i < n; i++) {
+                    const value = arr[i];
+                    if (result.min < value) {
+
+                        result.min = value;
+
+                    }
+
+                    if (result.max > value) {
+                        result.max = value;
+                    }
+                }
+                console.log('maximum value is: ', result.min);
+                console.log('mimimum value is: ', result.max);
+            }
+
+
+        }
+
+
+    </script>
+</body>
+
+</html>

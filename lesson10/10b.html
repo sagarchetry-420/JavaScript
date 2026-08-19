@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .gaming-button {
+            background-color: rgba(128, 128, 128, 0.237);
+            border: none;
+            padding: 8px 30px;
+            border-radius: 6px;
+            transition: background-color 0.15s;
+            cursor: pointer;
+        }
+
+        /* .gaming-button:hover {
+            background-color: rgba(70, 69, 69, 0.577);
+        } */
+
+        .gaming-button:active {
+            background-color: rgba(128, 128, 128, 0.83);
+        }
+
+        .after-clicking {
+            background-color: black;
+            color: white;
+            border-radius: 6px;
+            border: none;
+            padding: 8px 30px;
+            transition: background-color 0.15s;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <!--  <button class="js-gaming gaming-button" onclick="isToggled('gaming-btn');">Gaming</button>
+    <button class="js-music gaming-button" onclick="isToggled('music-btn');">Music</button>
+    <button class="js-tech gaming-button" onclick="isToggled('tech-btn');">Tech</button>
+    -->
+
+    <button class="js-gaming gaming-button" onclick="isToggled('.js-gaming');">Gaming</button>
+    <button class="js-music gaming-button" onclick="isToggled('.js-music');">Music</button>
+    <button class="js-tech gaming-button" onclick="isToggled('.js-tech');">Tech</button>
+
+    <script>
+
+        // Algorithm
+
+        /* 
+        Which button did the user click?
+            Find that button
+                Is it already selected?
+                    if (yes)
+                    {
+                        Turn off old button
+                        select new button}
+                    
+                    if (no){
+                        Turn off this button
+                    }
+        */
+
+        function isToggled(btn) {
+            const btnElm = document.querySelector(btn);
+            if (!btnElm.classList.contains('after-clicking')) {
+
+                turnOff();
+                btnElm.classList.add('after-clicking');
+            }
+            else {
+                btnElm.classList.remove('after-clicking');
+            }
+
+        }
+
+        function turnOff() {
+            const prev = document.querySelector('.after-clicking');
+            if (prev) {
+                prev.classList.remove('after-clicking');
+            }
+        }
+        /* function isToggled(btn) {
+             const gameElm = document.querySelector('.js-gaming');
+             const musicElm = document.querySelector('.js-music');
+             const techElm = document.querySelector('.js-tech');
+ 
+             if (btn === 'gaming-btn') {
+ 
+                 if (gameElm.classList.contains('gaming-button')) {
+                     gameElm.classList.remove('gaming-button');
+                     gameElm.classList.add('after-clicking');
+                     musicElm.classList.remove('after-clicking');
+                     techElm.classList.remove('after-clicking');
+                     musicElm.classList.add('gaming-button');
+                     techElm.classList.add('gaming-button');
+ 
+                 }
+                 else if (gameElm.classList.contains('after-clicking')) {
+                     gameElm.classList.remove('after-clicking');
+                     gameElm.classList.add('gaming-button');
+ 
+                 }
+             }
+ 
+             if (btn === 'music-btn') {
+ 
+                 if (musicElm.classList.contains('gaming-button')) {
+                     musicElm.classList.remove('gaming-button');
+                     musicElm.classList.add('after-clicking');
+                     techElm.classList.remove('after-clicking');
+                     techElm.classList.add('gaming-button');
+                     gameElm.classList.remove('after-clicking');
+                     gameElm.classList.add('gaming-button');
+ 
+                 }
+                 else if (musicElm.classList.contains('after-clicking')) {
+                     musicElm.classList.remove('after-clicking');
+                     musicElm.classList.add('gaming-button');
+ 
+ 
+                 }
+             }
+ 
+             if (btn === 'tech-btn') {
+ 
+                 if (techElm.classList.contains('gaming-button')) {
+                     techElm.classList.remove('gaming-button');
+                     techElm.classList.add('after-clicking');
+                     musicElm.classList.remove('after-clicking');
+                     gameElm.classList.remove('after-clicking');
+                     musicElm.classList.add('gaming-button');
+                     gameElm.classList.add('gaming-button');
+ 
+                 }
+                 else if (techElm.classList.contains('after-clicking')) {
+                     techElm.classList.remove('after-clicking');
+                     techElm.classList.add('gaming-button');
+ 
+ 
+                 }
+             }
+         } */
+    </script>
+</body>
+
+</html>

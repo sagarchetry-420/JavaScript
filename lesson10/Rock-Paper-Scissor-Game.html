@@ -1,0 +1,306 @@
+<!-- Rock Paper Scissors Game  now instead of popup . Show in webpage -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background: radial-gradient(rgb(255, 255, 255), rgb(121, 219, 255));
+        }
+
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 80vh;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 0px;
+        }
+
+        .playground {
+            background-color: rgba(0, 0, 0, 0.49);
+            height: 20%;
+            width: 30%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 40px 0;
+            border-radius: 10px;
+        }
+
+
+
+        .js-score {
+            text-align: center;
+        }
+
+        .js-updates {
+            color: white;
+            margin: 0px;
+            text-align: center;
+        }
+
+        .rock,
+        .paper,
+        .scissors {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(0, 0, 0, 0.104);
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .scissors img {
+            width: 80%;
+            height: 80%;
+            cursor: pointer;
+        }
+
+        .paper img {
+            width: 80%;
+            height: 80%;
+            cursor: pointer;
+        }
+
+        .rock img {
+            width: 80%;
+            height: 80%;
+            cursor: pointer;
+        }
+
+        .moves {
+            display: flex;
+            justify-content: space-between;
+            width: 20%;
+        }
+
+        .reset-button {
+            background-color: black;
+            border: none;
+            color: white;
+            border-radius: 10px;
+            padding: 10px 30px;
+            cursor: pointer;
+            transition: background-color 0.15s ease-in-out;
+        }
+
+        .reset-button:hover {
+            background-color: rgba(0, 0, 0, 0.738);
+        }
+
+        .reset-button:active {
+            background-color: rgba(0, 0, 0, 0.247);
+        }
+
+        .after-reseted {
+            background-color: black;
+            border: none;
+            color: white;
+            border-radius: 10px;
+            padding: 10px 30px;
+            cursor: pointer;
+        }
+        
+        @media (min-width: 480px) and (max-width: 1075px) {
+            .moves{
+                width: 40%;
+            }
+            .playground{
+                width: 40%;
+            }
+            
+        }
+
+        @media (max-width: 480px) {
+            .moves{
+                width: 60%;
+            }
+            .playground{
+                width: 50%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Rock Paper Scissors</h1>
+    <p class="js-score"></p>
+    <div class="main-container">
+        <div class="moves">
+            <div class="rock">
+                <img src="assets/rock.png" alt="" onclick="playGame('rock'); updateScore();">
+            </div>
+            <div class="paper">
+                <img src="assets/paper.png" alt="" onclick="playGame('paper'); updateScore();">
+            </div>
+            <div class="scissors">
+                <img src="assets/scissor.png" alt="" onclick="playGame('scissors'); updateScore();">
+            </div>
+            <!--<button onclick="playGame('rock');">Rock</button>
+           <button onclick="playGame('paper');">Paper</button>
+            <button onclick="playGame('scissors');">scissors</button> -->
+        </div>
+        <div class="playground">
+            <p class="js-updates"></p>
+        </div>
+
+        <button class="reset-button" onclick="scoreReset(); updateScore(); console.log(updateScore());">Reset
+            Score</button>
+    </div>
+
+
+    <script>
+
+        let score = JSON.parse(localStorage.getItem('score')) || {
+            wins: 0,
+            loose: 0,
+            tie: 0
+        };
+
+        /* if (!score) {
+            score = {
+                wins: 0,
+                loose: 0,
+                tie: 0
+            };
+        } */
+
+        updateScore();
+
+        function playGame(youMove) {
+            const computerMove = computerMovef();
+            updateScore();
+            let result;
+
+            // for your move scissors
+            if (youMove === 'scissors') {
+                if (computerMove === 'Rock') {
+                    result = 'You loose';
+                }
+                else if (computerMove === 'Paper') {
+                    result = 'You own';
+                }
+                else {
+                    result = 'Tie';
+                }
+            }
+            // for your move paper
+            else if (youMove === 'paper') {
+                if (computerMove === 'Rock') {
+                    result = 'You own';
+                }
+                else if (computerMove === 'Paper') {
+                    result = 'Tie';
+                }
+                else {
+                    result = 'You loose';
+                }
+            }
+            // for your move rock
+            else if (youMove === 'rock') {
+                if (computerMove === 'Rock') {
+                    result = 'Tie';
+                }
+                else if (computerMove === 'Paper') {
+                    result = 'You loose';
+                }
+                else {
+                    result = 'You own';
+                }
+            }
+
+
+            // for score
+
+            if (result === 'You own') {
+                score.wins++;
+            }
+            else if (result === 'You loose') {
+                score.loose++;
+            }
+            else {
+                score.tie++;
+            }
+
+            // using local storate to store
+            localStorage.setItem('score', JSON.stringify(score));
+
+            console.log(JSON.parse(localStorage.getItem('score')));
+
+            // alert(` Your move : ${youMove} \n Computer move: ${computerMove} \n\n ${result}
+            // wins: ${score.wins}, loose: ${score.loose}, tie: ${score.tie}`);
+
+            updateScore(youMove, computerMove, result);
+
+        }
+
+        function updateScore(youMove, computerMove, result) {
+            // to show in webpage
+
+            if (youMove === undefined || computerMove === undefined || result === undefined) {
+                document.querySelector('.js-score')
+                    .innerHTML = `wins: ${score.wins}, loose: ${score.loose}, tie: ${score.tie}`;
+
+            }
+            else {
+                document.querySelector('.js-updates')
+                    .innerHTML = `Your move : ${youMove} <br> Computer move: ${computerMove} <br> ${result} <br>`;
+
+            }
+
+
+
+        }
+
+        // for score reset button 
+        let resetedElm = document.querySelector('.reset-button');
+        function scoreReset() {
+            score.loose = 0;
+            score.wins = 0;
+            score.tie = 0;
+
+            localStorage.removeItem('score');
+            document.querySelector('.js-score')
+                .innerHTML = `wins: ${score.wins}, loose: ${score.loose}, tie: ${score.tie}`;
+            document.querySelector('.js-updates')
+                .innerHTML = '';
+            
+            
+            resetedElm.classList.add('after-reseted');
+
+            if (resetedElm.innerHTML === 'Reseted') {
+                resetedElm.classList.remove('reset-button');
+            }
+            //console.log('reseted');
+        }
+
+        function computerMovef() {
+            let computerMove;
+            const randomNum = Math.random();
+            if (randomNum >= 0 && randomNum < 1 / 3) {
+                computerMove = 'Rock';
+            }
+            else if (randomNum >= 1 / 3 && randomNum < 2 / 3) {
+                computerMove = 'Paper';
+            }
+            else {
+                computerMove = 'Scissors';
+            }
+            return computerMove;
+        }
+
+
+    </script>
+</body>
+
+</html>

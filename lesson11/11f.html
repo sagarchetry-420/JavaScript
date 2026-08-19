@@ -1,0 +1,37 @@
+<!-- create a function addNum(array, num) that takes an array of numbers and returns an array where each number is increased by 'num'
+ - addNum([1,2,3], 2 ) => [3,4,5]
+ - addNum([1,2,3], 3 ) => [4,5,6]
+ - addNum([-2,-1,0,99], 2 ) => [0,1,2,101] -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // const arr = [1, 2, 3];
+        // const num = 3;
+
+        const arr = [-2,-1,0,99];
+        const num = 2;
+
+        addNum(arr, num);
+
+        function addNum(arr, num) {
+            let arr2 = [];
+            for (let i = 0; i < arr.length; i++) {
+                
+                arr2.push(arr[i] + num);
+            }
+            console.log(`by adding ${num} to existing array ${arr} : ${arr2}`);
+        }
+    </script>
+</body>
+
+</html>
