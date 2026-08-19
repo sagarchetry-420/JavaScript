@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Create an array of strings, loop over the array, and check if the string 'search' is inside the array. If it is, console.log() the index of 'search' in the array. If not, console.log'-1'.
+        // ['hello','world','search','good'] => console.log(2)
+        // ['not','found'] => console.log(-1)
+        const arr = ['green','red','blue','red'];
+        const color = 'blue';
+        function isSearch(arr) {
+            let index = 0;
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] === 'search') {
+                    return i;
+                }
+            }
+        }
+        if (!isSearch(arr)) {
+            console.log(-1);
+        }
+        else {
+            console.log(isSearch(arr));
+        }
+
+
+        // Create a function findIndex(array, word) that searches an array for a string (in the 'word' parameter) and returns the index of the first appearance of the string. If it doesn't exist in the array, return -1.
+        // findIndex(['green','red','blue','red'], 'red') => 1
+        // findIndex(['green','red','blue','red'], 'yellow') => -1
+
+        function isSearch(arr, word) {
+            let index = 0;
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] === word) {
+                    return i;
+                }
+            }
+        }
+        if (!isSearch(arr,color)) {
+            console.log(-1);
+        }
+        else {
+            console.log(isSearch(arr,color));
+        }
+    </script>
+</body>
+
+</html>

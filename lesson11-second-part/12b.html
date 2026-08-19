@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Create a function removeEgg(foods) that takes an array of strings and returns an array where the string 'egg' is removed. (Hint: loop through the array and check if each string is 'egg'.If it is 'egg', use 'continue;' to skip it .If it's not 'egg', add it to the result).
+        // removeEgg(['egg','apple','egg','egg','ham']) => ['apple','ham']
+
+        const foods = ['egg', 'apple', 'egg', 'egg', 'ham'];
+        const item = 'egg';
+        const f = foods.slice();
+        function removeEgg(foods, item) {
+            let newList = [];
+            let count = 0;
+            for (let i = 0; i < foods.length; i++) {
+
+                if (count < 2) {
+                    if (foods[i] === item) {
+                        // update above to only remove the first 2 eggs from the array.
+                        // removeEgg(['egg','apple','egg','egg','ham']) => ['apple','egg','ham']
+                        count++;
+                        continue;
+
+                    }
+                    else {
+                        newList.push(foods[i]);
+                    }
+                }
+                else {
+                    newList.push(foods[i]);
+                }
+
+            }
+            // arrays have a method called .reverse(), which reverses the order of the values in the array. Using .reverse(), update above  to only remove the last 2 eggs from the array.
+            // removeEgg(['egg','apple','egg','egg','ham']) => ['egg', 'apple', 'ham']
+
+            return newList.reverse();
+        }
+
+        console.log(removeEgg(f.reverse(), item));
+
+        console.log(foods);
+
+
+
+
+    </script>
+</body>
+
+</html>

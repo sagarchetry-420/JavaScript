@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // below it create a function unique(array) that takes an array of strings and returns an array where each string only appears once (there are no duplicates). Try to use the findIndex() function in your solution.
+        // unique(['green', 'red', 'blue', 'red']) => ['green','red','blue']
+        // unique(['red', 'green', 'green', 'red']) => ['red', 'green']
+
+
+        const arr = ['green', 'red', 'blue', 'red'];
+
+        function isSearch(arr, word) {
+            let index = 0;
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] === word) {
+                    return i;
+                }
+            }
+        }
+
+
+        unique(arr);
+        function unique(arr) {
+            let newarr = [];
+            let obj = {};
+            
+            for (let i = 0; i < arr.length; i++) {
+                if (obj[arr[i]]) {
+                    continue;
+                }
+                else {
+                    obj[arr[i]] = 1;
+                    newarr.push(arr[i]);
+                }
+            }
+
+            console.log('new array is: ', newarr);
+            console.log(isSearch(newarr, 'green'));
+        }
+
+
+    </script>
+</body>
+
+</html>
