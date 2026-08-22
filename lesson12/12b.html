@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button class="js-start-btn" onclick="finishedBtn();" style=" cursor: pointer;">Start</button>
+    <script>
+        // Create the button 'start'. When clicking the button, after 1 second, the text inside the button changes to 'Finished!'.(Hint: use setTimeout() and the DOM) 
+
+       /* let startbtnElm = document.querySelector('.js-start-btn');
+
+
+        function finishedBtn() {
+            setTimeout(function () {
+                startbtnElm.innerHTML = 'Finished';
+            }, 1000)
+        } */
+
+        // Continue above, modify the button so that when we click it, the text immediately changes to 'Loading...', and then after 1 second, it changes to 'Finished!'.
+
+        let startbtnElm = document.querySelector('.js-start-btn');
+
+
+        function finishedBtn() {
+            startbtnElm.innerText = 'Loading...';
+            setTimeout(function () {
+                startbtnElm.innerText = 'Finished';
+            }, 2000)
+        }
+
+    </script>
+</body>
+
+</html>

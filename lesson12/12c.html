@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button class="js-add-to-cart" onclick="addedMessage(); " style=" cursor: pointer;">Add to cart</button>
+    <div class="js-added-message"></div>
+
+    <script>
+        //Create the 'Add to cart' button below. When clicking this button, display the message 'Added' below the button. Then, after 2 seconds, remove the message.
+
+
+        let addedElm = document.querySelector('.js-added-message');
+
+        let timeId;
+        function addedMessage() {
+            addedElm.innerHTML = `<p>Added</p>`;
+            clearTimeout(timeId);
+            timeId = setTimeout(function () {
+                addedElm.innerHTML = '';
+            }, 2000)
+
+
+        }
+        // Continue with above. If we click the button, wait 1 to 1.5 seconds, and then click the button again, notice that the second time, the message disappears very quickly( because the first setTimeout is still running and will make the message disappears very soon).
+        // Modify the code so when we click the button, it "refreshes" the 2 second wait time (waits for 2 seconds again and removes message).
+        // Hint: you can cancel the previous setTimeout using clearTimeout()
+    </script>
+</body>
+
+</html>
